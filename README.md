@@ -1,8 +1,17 @@
 # SimpleTwitch Examples
 Example projects for the SimpleTwitch library
 
-## ConsoleChatExample
-https://github.com/AuxLabs/SimpleTwitch-Examples/blob/22515a07fd5034ec6c770152e7ccc8505a0f0ff8/src/ConsoleChatExample/Program.cs#L22-L47
+### Identity Examples  
+*None yet*
 
-## ConsoleRestExample
-https://github.com/AuxLabs/SimpleTwitch-Examples/blob/22515a07fd5034ec6c770152e7ccc8505a0f0ff8/src/ConsoleRestExample/Program.cs#L24-L56
+### Rest Examples
+- [Get basic user info](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ConsoleRestExample)
+
+### Chat Examples
+- [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ConsoleChatExample)
+
+### EventSub Examples  
+*None yet*
+
+### PubSub Examples  
+*None yet*
