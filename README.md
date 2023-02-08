@@ -2,10 +2,10 @@
 Example projects for the main Twitch library
 
 ### Rest Examples
-*None yet*
+- [Get basic user info](https://github.com/AuxLabs/Twitch-Examples/tree/main/src/ConsoleRestExample)
 
 ### Chat Examples
-*None yet*
+- [Show chat feed in console](https://github.com/AuxLabs/Twitch-Examples/tree/main/src/ConsoleChatExample)
 
 ### EventSub Examples  
 *None yet*
