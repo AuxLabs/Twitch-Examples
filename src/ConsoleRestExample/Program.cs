@@ -16,31 +16,30 @@ if (clientId == null)
     clientId = Console.ReadLine();
 }
 
-while (true)                                            // Just a loop so you can request multiple users
+// Just a loop so you can request multiple users
+while (true)                                            
 {
     Console.WriteLine("> Please enter the username you want to get info for: ");
     var userName = Console.ReadLine();
 
-    var twitch = new TwitchRestApiClient                // Create the client with authentication headers
+    // Create the client with authentication headers
+    var twitch = new TwitchRestApiClient                
     {
         Authorization = new AuthenticationHeaderValue("Bearer", pass),
         ClientId = clientId
     };
 
-    var userResponse = await twitch.GetUsersAsync(x =>      // Get the user by name
-    {
-        x.UserNames.Add(userName);
-    });
+    // Get the user by name
+    var userResponse = await twitch.GetUsersAsync(new GetUsersArgs(GetUsersMode.Name, userName));
 
-    if (userResponse.Data.FirstOrDefault() is User user)    // Check if the user exists
+    // Check if the requested user exists
+    if (userResponse.Data.FirstOrDefault() is User user)    
     {
-        var channelResponse = await twitch.GetChannelsAsync(x =>      // Get the user's channel
-        {
-            x.ChannelIds.Add(user.Id);
-        });
+        // Get the user's channel
+        var channelResponse = await twitch.GetChannelsAsync(new GetChannelsArgs(user.Id));
 
-                                                            // Output their user info
-        Console.WriteLine($"{user.DisplayName ?? user.Login} ({user.Id})");
+        // Output their user info
+        Console.WriteLine($"{user.DisplayName ?? user.Name} ({user.Id})");
         if (!string.IsNullOrWhiteSpace(user.Description))
             Console.WriteLine($"{user.Description}");
         Console.WriteLine($"They joined at {user.CreatedAt}");
@@ -49,7 +48,8 @@ while (true)                                            // Just a loop so you ca
         if (user.Type != UserType.None)
             Console.WriteLine($"They are a {user.Type}");
 
-        var channel = channelResponse.Data.First();             // Output their channel info
+        // Output their channel info
+        var channel = channelResponse.Data.First();             
         if (channel.GameId != null)
             Console.WriteLine($"They were last playing {channel.GameName} ({channel.GameId})");
         if (channel.Tags.Any())
