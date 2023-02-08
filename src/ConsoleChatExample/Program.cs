@@ -25,14 +25,14 @@ Console.WriteLine("> Connecting...");
 var twitch = new TwitchChatApiClient();
 twitch.SetIdentity(user, token);
 
-twitch.Connected += OnConnectedAsync;
+twitch.Connected += OnConnected;
 twitch.MessageReceived += OnMessageReceived;
 
 // Run the connection loop, the app will lock here until the client is disposed.
 await twitch.RunAsync();
 
 // After connection is confirmed, join a channel
-void OnConnectedAsync()                     
+void OnConnected()                     
 {
     Console.WriteLine("> Connected");
     twitch.Send(new JoinChannelRequest(channelName));
