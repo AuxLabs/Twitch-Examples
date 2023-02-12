@@ -10,17 +10,17 @@ if (token == null)
     token = Console.ReadLine();
 }
 
+// Create an instance of the rest client
+var twitch = new TwitchRestClient();
+
+// Validate your token with the twitch servers.
+await twitch.ValidateAsync(token);
+
 // Just a loop so you can request multiple users
 while (true)
 {
     Console.WriteLine("> Please enter the username you want to get info for: ");
     var userName = Console.ReadLine();
-
-    // Create an instance of the rest client
-    var twitch = new TwitchRestClient();
-
-    // Validate your token with the twitch servers.
-    await twitch.ValidateAsync(token);
 
     // Get the user by name
     var user = await twitch.GetUserByNameAsync(userName);
