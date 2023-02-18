@@ -25,8 +25,11 @@ while (true)
     // Get the user by name
     var user = await twitch.GetUserByNameAsync(userName);
 
-    // Check if the requested user exists
-    if (user != null)
+    // Method returns null if the user doesn't exist
+    if (user == null)
+    {
+        Console.WriteLine($"{userName} does not exist!");
+    } else
     {
         // Get the user's channel
         var channel = await user.GetChannelAsync();
@@ -54,6 +57,4 @@ while (true)
 
         Console.ReadKey(true);
     }
-    else
-        Console.WriteLine($"{userName} does not exist!");
 }
