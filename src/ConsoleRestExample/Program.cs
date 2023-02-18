@@ -34,6 +34,9 @@ while (true)
         // Get the user's channel
         var channel = await user.GetChannelAsync();
 
+        // Get the user's broadcast
+        var broadcast = await user.GetBroadcastAsync();
+
         // Output their user info
         Console.WriteLine(user);
 
@@ -55,6 +58,20 @@ while (true)
         if (channel.Tags.Any())
             Console.WriteLine($"With the tags: {string.Join(", ", channel.Tags)}");
 
+        // Output their broadcast info
+        if (broadcast == null)
+        {
+            Console.WriteLine("They are not currently streaming");
+        } else
+        {
+            Console.WriteLine($"They're playing {broadcast.GameName} for {broadcast.ViewerCount} viewer(s)!");
+            Console.WriteLine($"Title: {broadcast.Title}");
+
+            var uptime = DateTime.UtcNow - broadcast.StartedAt;
+            Console.WriteLine($"They've been live for {uptime:h'h 'm'm 's's'}");
+        }
+
+        // Wait before looping
         Console.ReadKey(true);
     }
 }
