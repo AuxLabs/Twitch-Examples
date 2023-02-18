@@ -32,31 +32,41 @@ while (true)
     // Get the user by name
     var userResponse = await twitch.GetUsersAsync(new GetUsersArgs(GetUsersMode.Name, userName));
 
-    // Check if the requested user exists
-    if (userResponse.Data.FirstOrDefault() is User user)    
+    // Method returns an empty data collection if the user doesn't exist
+    if (!userResponse.Data.Any())
     {
+        Console.WriteLine($"{userName} does not exist!");
+    } else
+    {
+        // Get the user model out of the response
+        var user = userResponse.Data.First();
+        
         // Get the user's channel
         var channelResponse = await twitch.GetChannelsAsync(new GetChannelsArgs(user.Id));
 
         // Output their user info
         Console.WriteLine($"{user.DisplayName ?? user.Name} ({user.Id})");
+        
         if (!string.IsNullOrWhiteSpace(user.Description))
             Console.WriteLine($"{user.Description}");
+        
         Console.WriteLine($"They joined at {user.CreatedAt}");
+        
         if (user.BroadcasterType != BroadcasterType.None)
             Console.WriteLine($"They currently have {user.BroadcasterType} status");
+        
         if (user.Type != UserType.None)
             Console.WriteLine($"They are a {user.Type}");
 
         // Output their channel info
-        var channel = channelResponse.Data.First();             
+        var channel = channelResponse.Data.First();
+        
         if (channel.GameId != null)
             Console.WriteLine($"They were last playing {channel.GameName} ({channel.GameId})");
+        
         if (channel.Tags.Any())
             Console.WriteLine($"With the tags: {string.Join(", ", channel.Tags)}");
 
         Console.ReadKey(true);
     }
-    else
-        Console.WriteLine($"{userName} does not exist!");
 }
