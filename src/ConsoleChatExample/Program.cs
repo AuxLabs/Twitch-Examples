@@ -41,14 +41,9 @@ void OnConnected()
 // Handle when a message is received
 void OnMessageReceived(MessageEventArgs args)
 {
-    // Sometimes twitch doesn't send a display name, so we use name otherwise.
-    var name = !string.IsNullOrWhiteSpace(args.Tags.DisplayName)
-        ? args.Tags.DisplayName
-        : args.Tags.Name;
-
     // Check if the message is replying to another
     if (!string.IsNullOrWhiteSpace(args.Tags.ReplyParentMessageId))     
-        Console.WriteLine($"#{args.ChannelName} {name} -> {args.Tags.ReplyParentUserName}: {args.Message}");
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName} -> {args.Tags.ReplyParentUserName}: {args.Message}");
     else
-        Console.WriteLine($"#{args.ChannelName} {name}: {args.Message}");
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName}: {args.Message}");
 }
