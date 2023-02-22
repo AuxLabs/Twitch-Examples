@@ -1,15 +1,10 @@
-﻿using AuxLabs.SimpleTwitch;
-using AuxLabs.SimpleTwitch.Chat;
+﻿using AuxLabs.SimpleTwitch.Chat;
+using AuxLabs.SimpleTwitch.Rest;
 
 var user = Environment.GetEnvironmentVariable("TWITCH_USER", EnvironmentVariableTarget.User);
 var token = Environment.GetEnvironmentVariable("TWITCH_TOKEN", EnvironmentVariableTarget.User);
 
 Console.WriteLine("> Initializing chat client...");
-if (user == null)
-{
-    Console.WriteLine("> Please enter your username: ");
-    user = Console.ReadLine();
-}
 if (token == null)
 {
     Console.WriteLine("> Please enter your oauth token: ");
@@ -21,34 +16,33 @@ var channelName = Console.ReadLine();
 
 Console.WriteLine("> Connecting...");
 
-// Create an instance of the chat client and set identity
-var twitch = new TwitchChatApiClient();
-twitch.SetIdentity(user, token);
+// Create an instance of the rest client and validate provided token
+var rest = new TwitchRestApiClient();
+var identity = await rest.ValidateAsync(token);
 
-twitch.Connected += OnConnected;
-twitch.MessageReceived += OnMessageReceived;
+// Create an instance of the chat client and set identity
+var chat = new TwitchChatApiClient();
+chat.SetIdentity(identity.UserName, token);
+
+chat.Connected += OnConnected;
+chat.MessageReceived += OnMessageReceived;
 
 // Run the connection loop, the app will lock here until the client is disposed.
-await twitch.RunAsync();
+await chat.RunAsync();
 
 // After connection is confirmed, join a channel
 void OnConnected()                     
 {
     Console.WriteLine("> Connected");
-    twitch.Send(new JoinChannelRequest(channelName));
+    chat.Send(new JoinChannelRequest(channelName));
 }
 
 // Handle when a message is received
 void OnMessageReceived(MessageEventArgs args)
 {
-    // Sometimes twitch doesn't send a display name, so we use name otherwise.
-    var name = !string.IsNullOrWhiteSpace(args.Tags.DisplayName)
-        ? args.Tags.DisplayName
-        : args.Tags.Name;
-
     // Check if the message is replying to another
     if (!string.IsNullOrWhiteSpace(args.Tags.ReplyParentMessageId))     
-        Console.WriteLine($"#{args.ChannelName} {name} -> {args.Tags.ReplyParentUserName}: {args.Message}");
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName} -> {args.Tags.ReplyParentUserName}: {args.Message}");
     else
-        Console.WriteLine($"#{args.ChannelName} {name}: {args.Message}");
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName}: {args.Message}");
 }
