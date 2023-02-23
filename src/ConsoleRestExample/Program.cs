@@ -1,20 +1,20 @@
 ﻿using AuxLabs.SimpleTwitch.Rest;
-using System.Net.Http.Headers;
+using System.Diagnostics;
 
-var pass = Environment.GetEnvironmentVariable("TWITCH_TOKEN", EnvironmentVariableTarget.User);
-var clientId = Environment.GetEnvironmentVariable("TWITCH_CLIENTID", EnvironmentVariableTarget.User);
+var token = Environment.GetEnvironmentVariable("TWITCH_TOKEN", EnvironmentVariableTarget.User);
 
 Console.WriteLine("> Initializing rest client...");
-if (pass == null)
+if (token == null)
 {
     Console.WriteLine("> Please enter your oauth token: ");
-    pass = Console.ReadLine();
+    token = Console.ReadLine();
 }
-if (clientId == null)
-{
-    Console.WriteLine("> Please enter your client id: ");
-    clientId = Console.ReadLine();
-}
+
+// Create the client and authenticate with the provided token
+var rest = new TwitchRestApiClient();
+var identity = await rest.ValidateAsync(token);
+
+Console.WriteLine($"> Verfied token for {identity.UserName} ({identity.UserId})");
 
 // Just a loop so you can request multiple users
 while (true)                                            
@@ -22,15 +22,8 @@ while (true)
     Console.WriteLine("> Please enter the username you want to get info for: ");
     var userName = Console.ReadLine();
 
-    // Create the client with authentication headers
-    var twitch = new TwitchRestApiClient                
-    {
-        Authorization = new AuthenticationHeaderValue("Bearer", pass),
-        ClientId = clientId
-    };
-
     // Get the user by name
-    var userResponse = await twitch.GetUsersAsync(new GetUsersArgs(GetUsersMode.Name, userName));
+    var userResponse = await rest.GetUsersAsync(new GetUsersArgs(GetUsersMode.Name, userName));
 
     // Method returns an empty data collection if the user doesn't exist
     if (!userResponse.Data.Any())
@@ -40,13 +33,13 @@ while (true)
     {
         // Get the user model out of the response
         var user = userResponse.Data.First();
-        
+
         // Get the user's channel
-        var channelResponse = await twitch.GetChannelsAsync(new GetChannelsArgs(user.Id));
+        var channelResponse = await rest.GetChannelsAsync(new GetChannelsArgs(user.Id));
 
         // Get the user's stream
-        var broadcastResponse = await twitch.GetBroadcastsAsync(new GetBroadcastsArgs(user.Id));
-        
+        var broadcastResponse = await rest.GetBroadcastsAsync(new GetBroadcastsArgs(user.Id));
+
         // Output their user info
         Console.WriteLine($"{user.DisplayName ?? user.Name} ({user.Id})");
         
