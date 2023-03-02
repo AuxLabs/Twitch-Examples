@@ -1,18 +1,10 @@
 ﻿using AuxLabs.SimpleTwitch.Chat;
 using AuxLabs.SimpleTwitch.Rest;
-
-var user = Environment.GetEnvironmentVariable("TWITCH_USER", EnvironmentVariableTarget.User);
-var token = Environment.GetEnvironmentVariable("TWITCH_TOKEN", EnvironmentVariableTarget.User);
+using Examples;
 
 Console.WriteLine("> Initializing chat client...");
-if (token == null)
-{
-    Console.WriteLine("> Please enter your oauth token: ");
-    token = Console.ReadLine();
-}
-
-Console.WriteLine("> Please enter the channel name to join: ");
-var channelName = Console.ReadLine();
+var token = ExampleHelper.GetOrRequestToken();
+var channelName = ExampleHelper.RequestValue("> Please enter the channel name to join: ");
 
 Console.WriteLine("> Connecting...");
 
@@ -34,7 +26,7 @@ await chat.RunAsync();
 void OnConnected()                     
 {
     Console.WriteLine("> Connected");
-    chat.Send(new JoinChannelRequest(channelName));
+    chat.SendJoin(channelName);
 }
 
 // Handle when a message is received

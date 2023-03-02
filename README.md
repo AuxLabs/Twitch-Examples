@@ -2,13 +2,13 @@
 Example projects for the SimpleTwitch library
 
 ### Identity Examples  
-*None yet*
+- [Validating tokens](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ValidateTokenExample)
 
 ### Rest Examples
-- [Get basic user info](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ConsoleRestExample)
+- [Get user info](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/GetUserInfoExample)
 
 ### Chat Examples
-- [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ConsoleChatExample)
+- [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatConnectionExample)
 
 ### EventSub Examples  
 *None yet*

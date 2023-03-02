@@ -3,9 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleRestExample", "src\ConsoleRestExample\ConsoleRestExample.csproj", "{2864FBE8-DA58-406E-9C44-480EF98C86CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetUserInfoExample", "src\GetUserInfoExample\GetUserInfoExample.csproj", "{2864FBE8-DA58-406E-9C44-480EF98C86CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleChatExample", "src\ConsoleChatExample\ConsoleChatExample.csproj", "{DB8D4C8B-FDEE-4D92-A483-65C873552606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatConnectionExample", "src\ChatConnectionExample\ChatConnectionExample.csproj", "{DB8D4C8B-FDEE-4D92-A483-65C873552606}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Examples.Core", "src\Examples.Core\Examples.Core.csproj", "{64D0C642-947A-41B7-8479-A7990DB1C200}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{924493CA-D61B-4768-ADEB-5A1FF5A02D26}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{768A76A6-61E8-4E5D-ACAC-4AE4F73CC3F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateTokenExample", "src\ValidateTokenExample\ValidateTokenExample.csproj", "{DAB2F300-BFA2-45AD-8E6B-1F13899C011E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +34,20 @@ Global
 		{DB8D4C8B-FDEE-4D92-A483-65C873552606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB8D4C8B-FDEE-4D92-A483-65C873552606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB8D4C8B-FDEE-4D92-A483-65C873552606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D0C642-947A-41B7-8479-A7990DB1C200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D0C642-947A-41B7-8479-A7990DB1C200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D0C642-947A-41B7-8479-A7990DB1C200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D0C642-947A-41B7-8479-A7990DB1C200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB2F300-BFA2-45AD-8E6B-1F13899C011E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB2F300-BFA2-45AD-8E6B-1F13899C011E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB2F300-BFA2-45AD-8E6B-1F13899C011E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB2F300-BFA2-45AD-8E6B-1F13899C011E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64D0C642-947A-41B7-8479-A7990DB1C200} = {768A76A6-61E8-4E5D-ACAC-4AE4F73CC3F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A450F7EC-67D9-456E-9A41-BBE17259D529}
