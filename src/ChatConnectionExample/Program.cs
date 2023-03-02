@@ -33,7 +33,7 @@ void OnConnected()
 void OnMessageReceived(MessageEventArgs args)
 {
     // Check if the message is replying to another
-    if (!string.IsNullOrWhiteSpace(args.Tags.ReplyParentMessageId))     
+    if (args.Tags.ReplyParentMessageId != null)     
         Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName} -> {args.Tags.ReplyParentUserName}: {args.Message}");
     else
         Console.WriteLine($"#{args.ChannelName} {args.Tags.DisplayName}: {args.Message}");
