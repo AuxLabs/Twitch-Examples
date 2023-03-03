@@ -9,6 +9,7 @@ Example projects for the SimpleTwitch library
 
 ### Chat Examples
 - [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatConnectionExample)
+- [Show subscriptions in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatSubscriptionEventsExample)
 
 ### EventSub Examples  
 *None yet*
