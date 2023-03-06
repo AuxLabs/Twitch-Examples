@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AuxLabs.SimpleTwitch.Chat" Version="0.1.0-build-90" />
-    <PackageReference Include="AuxLabs.SimpleTwitch.Rest" Version="0.1.0-build-90" />
+    <PackageReference Include="AuxLabs.SimpleTwitch.Chat" Version="0.1.0-build-92" />
+    <PackageReference Include="AuxLabs.SimpleTwitch.Rest" Version="0.1.0-build-92" />
   </ItemGroup>
 
 </Project>
