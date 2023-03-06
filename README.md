@@ -8,6 +8,7 @@ All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environmen
 
 ### Rest Examples
 - [Get user info](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/GetUserInfoExample)
+- [Check stream status](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/StreamStatusExample)
 
 ### Chat Examples
 - [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatConnectionExample)
