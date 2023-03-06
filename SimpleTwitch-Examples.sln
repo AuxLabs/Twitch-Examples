@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidateTokenExample", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatSubscriptionEventsExample", "src\ChatSubscriptionEventsExample\ChatSubscriptionEventsExample.csproj", "{7417B981-1D87-41FB-9C01-57C12BBD223E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoBotExample", "src\EchoBotExample\EchoBotExample.csproj", "{17A6ADF7-EB4E-4CD5-8D30-0931DAF4A2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EchoBotHostedExample", "src\EchoBotHostedExample\EchoBotHostedExample.csproj", "{17A6ADF7-EB4E-4CD5-8D30-0931DAF4A2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoBotExample", "src\EchoBotExample\EchoBotExample.csproj", "{437BFBD4-1845-4C8F-A701-E30FCF55D4E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{17A6ADF7-EB4E-4CD5-8D30-0931DAF4A2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17A6ADF7-EB4E-4CD5-8D30-0931DAF4A2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17A6ADF7-EB4E-4CD5-8D30-0931DAF4A2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{437BFBD4-1845-4C8F-A701-E30FCF55D4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437BFBD4-1845-4C8F-A701-E30FCF55D4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437BFBD4-1845-4C8F-A701-E30FCF55D4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437BFBD4-1845-4C8F-A701-E30FCF55D4E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

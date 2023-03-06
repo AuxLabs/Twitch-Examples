@@ -1,28 +1,36 @@
-﻿
-using AuxLabs.SimpleTwitch.Chat;
+﻿using AuxLabs.SimpleTwitch.Chat;
 using AuxLabs.SimpleTwitch.Rest;
-using EchoBotExample.Services;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Examples;
 
-using IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureLogging(builder =>
-    {
-        builder.AddSimpleConsole();
-    })
-    .ConfigureHostConfiguration(configure =>
-    {
-        configure.AddEnvironmentVariables(prefix: "TWITCH_");
-    })
-    .ConfigureServices(services =>
-    {
-        services.AddSingleton<TwitchRestApiClient>();
-        services.AddSingleton<TwitchChatApiClient>();
-        services.AddHostedService<TwitchHostedService>();
-        services.AddHostedService<EchoService>();
-    })
-    .Build();
+Console.WriteLine("> Initializing chat client...");
+var token = ExampleHelper.GetOrRequestToken();
 
-await host.RunAsync();
+Console.WriteLine("> Connecting...");
+
+// Create an instance of the rest client and validate provided token
+var rest = new TwitchRestApiClient();
+var identity = await rest.ValidateAsync(token);
+
+// Create an instance of the chat client and set identity
+var chat = new TwitchChatApiClient();
+chat.SetIdentity(identity.UserName, token);
+
+chat.Connected += OnConnected;
+chat.MessageReceived += OnMessageReceived;
+
+// Run the connection loop, the app will lock here until the client is disposed.
+await chat.RunAsync();
+
+// After connection is confirmed, join a channel
+void OnConnected()
+{
+    Console.WriteLine("> Connected");
+    chat.SendJoin(identity.UserName);
+}
+
+// Handle when a message is received
+void OnMessageReceived(MessageEventArgs args)
+{
+    Console.WriteLine($"Replying to {args.UserName} with {args.Message}");
+    chat.SendChannelMessage(args.ChannelName, args.Message, args.Tags.Id);
+}
