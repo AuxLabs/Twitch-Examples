@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace EchoBotExample.Services
+namespace EchoBotHostedExample.Services
 {
     public class EchoService : IHostedService
     {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace EchoBotExample.Services
+namespace EchoBotHostedExample.Services
 {
     public class TwitchHostedService : IHostedService
     {
