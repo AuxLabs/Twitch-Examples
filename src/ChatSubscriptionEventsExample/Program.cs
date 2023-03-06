@@ -37,24 +37,24 @@ void OnUserNoticeReceived(UserNoticeEventArgs args)
     {
         // Regular subs
         case SubscriptionTags sub:
-            Console.WriteLine($"> {sub.DisplayName} subscribed at {sub.SubscriptionType} for {sub.TotalMonths} month(s)!");
+            Console.WriteLine($"> {sub.UserDisplayName} subscribed at {sub.SubscriptionType} for {sub.TotalMonths} month(s)!");
             if (sub.IsStreakShared)
                 Console.WriteLine($"> Their sub streak is {sub.StreakMonths} month(s)!");
             break;
 
         // Sub gifted
         case SubscriptionGiftTags subgift:
-            Console.WriteLine($"> {subgift.DisplayName} just gifted a {subgift.SubscriptionType} sub to {subgift.RecipientDisplayName}!");
+            Console.WriteLine($"> {subgift.UserDisplayName} just gifted a {subgift.SubscriptionType} sub to {subgift.RecipientDisplayName}!");
             break;
 
         // Gift sub upgraded to paid
         case SubscriptionGiftUpgradeTags subgiftUpgrade:
-            Console.WriteLine($"> {subgiftUpgrade.DisplayName} just upgraded their sub gift from {subgiftUpgrade.SenderDisplayName}!");
+            Console.WriteLine($"> {subgiftUpgrade.UserDisplayName} just upgraded their sub gift from {subgiftUpgrade.SenderDisplayName}!");
             break;
 
         // Anonymous sub upgraded to paid
         case SubscriptionGiftUpgradeAnonymousTags subgiftAnon:
-            Console.WriteLine($"> {subgiftAnon.DisplayName} just upgraded their sub gift from Anonymous!");
+            Console.WriteLine($"> {subgiftAnon.UserDisplayName} just upgraded their sub gift from Anonymous!");
             break;
     }
 }
