@@ -1,6 +1,8 @@
 # SimpleTwitch Examples
 Example projects for the SimpleTwitch library
 
+All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environment variables set.
+
 ### Identity Examples  
 - [Validating tokens](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ValidateTokenExample)
 
