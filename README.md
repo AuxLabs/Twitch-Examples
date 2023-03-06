@@ -12,7 +12,7 @@ All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environmen
 
 ### Chat Examples
 - [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatConnectionExample)
-- [Show subscriptions in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatSubscriptionEventsExample)
+- [Show subscription messages in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatSubscriptionEventsExample)
 - [Echo bot](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/EchoBotExample)
 - [Echo bot using HostBuilder](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/EchoBotHostedExample)
 
