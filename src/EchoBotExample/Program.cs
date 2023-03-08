@@ -32,5 +32,5 @@ void OnConnected()
 void OnMessageReceived(MessageEventArgs args)
 {
     Console.WriteLine($"Replying to {args.UserName} with {args.Message}");
-    chat.SendChannelMessage(args.ChannelName, args.Message, args.Tags.Id);
+    chat.SendMessage(args.ChannelName, args.Message, args.Tags.Id);
 }

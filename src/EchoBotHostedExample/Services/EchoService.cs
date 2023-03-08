@@ -32,7 +32,7 @@ namespace EchoBotHostedExample.Services
         private void OnMessageReceived(MessageEventArgs args)
         {
             _logger.LogInformation($"Replying to {args.UserName} with {args.Message}");
-            _chat.SendChannelMessage(args.ChannelName, args.Message, args.Tags.Id);
+            _chat.SendMessage(args.ChannelName, args.Message, args.Tags.Id);
         }
     }
 }

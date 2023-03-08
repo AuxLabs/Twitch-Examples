@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AuxLabs.SimpleTwitch.Chat" Version="0.1.0-build-92" />
-    <PackageReference Include="AuxLabs.SimpleTwitch.Rest" Version="0.1.0-build-92" />
+    <PackageReference Include="AuxLabs.SimpleTwitch.Chat" Version="0.1.0-build-96" />
+    <PackageReference Include="AuxLabs.SimpleTwitch.EventSub.WebSockets" Version="0.1.0-build-96" />
+    <PackageReference Include="AuxLabs.SimpleTwitch.Rest" Version="0.1.0-build-96" />
   </ItemGroup>
 
 </Project>
