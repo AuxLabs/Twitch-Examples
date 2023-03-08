@@ -17,7 +17,7 @@ All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environmen
 - [Echo bot using HostBuilder](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/EchoBotHostedExample)
 
 ### EventSub Examples  
-*None yet*
+- [Stream status events](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/StreamStatusEventsExample)
 
 ### PubSub Examples  
 *None yet*
