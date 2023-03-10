@@ -18,6 +18,7 @@ All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environmen
 
 ### EventSub Examples  
 - [Stream status events](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/StreamStatusEventsExample)
+- [Follower events](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/FollowerEventExample)
 
 ### PubSub Examples  
 *None yet*
