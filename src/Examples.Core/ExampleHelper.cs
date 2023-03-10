@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AuxLabs.SimpleTwitch.Rest;
+using Newtonsoft.Json.Linq;
 
 namespace Examples
 {
@@ -34,6 +35,26 @@ namespace Examples
                 return token;
 
             return RequestValue("> Please enter your client id: ");
+        }
+
+        public static async Task<User> RequestUserAsync(TwitchRestApiClient rest, string message)
+        {
+            User? user = null;
+            while (user == null)
+            {
+                var userName = RequestValue(message);
+
+                var userResponse = await rest.GetUsersAsync(new GetUsersArgs(GetUsersMode.Name, userName));
+                if (!userResponse.Data.Any())
+                {
+                    Console.WriteLine($"> {userName} is not a valid user name");
+                    continue;
+                }
+
+                user = userResponse.Data.SingleOrDefault();
+            }
+
+            return user;
         }
     }
 }
