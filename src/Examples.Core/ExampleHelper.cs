@@ -1,5 +1,6 @@
-﻿using AuxLabs.SimpleTwitch.Rest;
-using Newtonsoft.Json.Linq;
+﻿using AuxLabs.Twitch.Rest.Api;
+using AuxLabs.Twitch.Rest.Models;
+using AuxLabs.Twitch.Rest.Requests;
 
 namespace Examples
 {

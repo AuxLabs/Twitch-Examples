@@ -1,5 +1,6 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Rest.Api;
+using AuxLabs.Twitch.Rest.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -31,15 +32,16 @@ namespace EchoBotHostedExample.Services
             var identity = await _rest.ValidateAsync(_config["token"]);
             _logger.LogInformation($"Validated token for {identity.UserName} ({identity.UserId})");
 
-            _chat.SetIdentity(identity.UserName, token);
+            _chat.WithIdentity(identity.UserName, token);
 
             _logger.LogInformation("Starting background service");
             _ = _chat.RunAsync().WaitAsync(cancellationToken);
         }
 
-        public async Task StopAsync(CancellationToken cancellationToken)
+        public Task StopAsync(CancellationToken cancellationToken)
         {
-            await _chat.StopAsync().WaitAsync(cancellationToken);
+            _chat.Dispose();
+            return Task.CompletedTask;
         }
 
         private void OnConnected()

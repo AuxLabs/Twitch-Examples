@@ -1,5 +1,7 @@
-﻿using AuxLabs.SimpleTwitch.EventSub;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch.EventSub.Api;
+using AuxLabs.Twitch.EventSub.Models;
+using AuxLabs.Twitch.Rest.Api;
+using AuxLabs.Twitch.Rest.Requests;
 using Examples;
 
 var rest = new TwitchRestApiClient();

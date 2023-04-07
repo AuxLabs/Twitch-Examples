@@ -1,24 +1,42 @@
-# SimpleTwitch Examples
-Example projects for the SimpleTwitch library
+# Twitch Examples
+Example projects for the [AuxLabs.Twitch](https://github.com/AuxLabs/Twitch) library
 
 All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environment variables set.
 
-### Identity Examples  
-- [Validating tokens](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ValidateTokenExample)
+## Main Clients
+### Identity  
+*None yet*
 
-### Rest Examples
-- [Get user info](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/GetUserInfoExample)
-- [Check stream status](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/StreamStatusExample)
+### Rest  
+*None yet*
 
-### Chat Examples
-- [Show chat feed in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatConnectionExample)
-- [Show subscription messages in console](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/ChatSubscriptionEventsExample)
-- [Echo bot](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/EchoBotExample)
-- [Echo bot using HostBuilder](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/EchoBotHostedExample)
+### Chat  
+*None yet*
 
-### EventSub Examples  
-- [Stream status events](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/StreamStatusEventsExample)
-- [Follower events](https://github.com/AuxLabs/SimpleTwitch-Examples/tree/main/src/FollowerEventExample)
+### EventSub  
+*None yet*
 
-### PubSub Examples  
+### PubSub  
+*None yet*
+
+
+## Api Clients
+### Identity  
+- [Validating tokens](src/ValidateTokenExample)
+
+### Rest
+- [Get user info](src/GetUserInfoExample)
+- [Get stream status](src/GetStreamStatusExample)
+
+### Chat
+- [Show chat feed in console](src/ChatConnectionExample)
+- [Show subscription messages in console](src/ChatSubscriptionEventsExample)
+- [Echo bot](src/EchoBotExample)
+- [Echo bot using HostBuilder](src/EchoBotHostedExample)
+
+### EventSub  
+- [Stream status events](src/StreamStatusEventsExample)
+- [Follower events](src/FollowerEventExample)
+
+### PubSub  
 *None yet*

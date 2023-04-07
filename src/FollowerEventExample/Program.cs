@@ -1,5 +1,8 @@
-﻿using AuxLabs.SimpleTwitch.EventSub;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch.EventSub.Api;
+using AuxLabs.Twitch.EventSub.Models;
+using AuxLabs.Twitch.Rest.Api;
+using AuxLabs.Twitch.Rest.Models;
+using AuxLabs.Twitch.Rest.Requests;
 using Examples;
 
 var rest = new TwitchRestApiClient();
@@ -19,6 +22,7 @@ eventsub.ChannelFollow += OnChannelFollow;
 
 // Run the connection loop, the app will lock here until the client is disposed.
 await eventsub.RunAsync();
+await Task.Delay(-1);
 
 async void OnSessionCreated(Session session)
 {

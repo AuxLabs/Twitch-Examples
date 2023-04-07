@@ -1,4 +1,6 @@
-﻿using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch;
+using AuxLabs.Twitch.Rest.Api;
+using AuxLabs.Twitch.Rest.Models;
 using Examples;
 
 Console.WriteLine("> Initializing identity client...");

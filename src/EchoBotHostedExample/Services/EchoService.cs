@@ -1,4 +1,5 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
+﻿using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Chat.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -32,7 +33,7 @@ namespace EchoBotHostedExample.Services
         private void OnMessageReceived(MessageEventArgs args)
         {
             _logger.LogInformation($"Replying to {args.UserName} with {args.Message}");
-            _chat.SendMessage(args.ChannelName, args.Message, args.Tags.Id);
+            _chat.SendMessage(args.ChannelName, args.Message, args.Tags.MessageId);
         }
     }
 }

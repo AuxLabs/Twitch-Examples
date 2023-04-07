@@ -1,5 +1,5 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Rest.Api;
 using EchoBotHostedExample.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

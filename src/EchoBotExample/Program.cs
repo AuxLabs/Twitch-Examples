@@ -1,5 +1,6 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Chat.Models;
+using AuxLabs.Twitch.Rest.Api;
 using Examples;
 
 Console.WriteLine("> Initializing chat client...");
@@ -13,7 +14,7 @@ var identity = await rest.ValidateAsync(token);
 
 // Create an instance of the chat client and set identity
 var chat = new TwitchChatApiClient();
-chat.SetIdentity(identity.UserName, token);
+chat.WithIdentity(identity.UserName, token);
 
 chat.Connected += OnConnected;
 chat.MessageReceived += OnMessageReceived;
@@ -32,5 +33,5 @@ void OnConnected()
 void OnMessageReceived(MessageEventArgs args)
 {
     Console.WriteLine($"Replying to {args.UserName} with {args.Message}");
-    chat.SendMessage(args.ChannelName, args.Message, args.Tags.Id);
+    chat.SendMessage(args.ChannelName, args.Message, args.Tags.MessageId);
 }

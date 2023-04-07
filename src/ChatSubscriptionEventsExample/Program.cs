@@ -1,20 +1,19 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch;
+using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Chat.Models;
 using Examples;
 
 Console.WriteLine("> Initializing chat client...");
-var token = ExampleHelper.GetOrRequestToken();
 var channelName = ExampleHelper.RequestValue("> Please enter the channel name to join: ");
 
 Console.WriteLine("> Connecting...");
 
-// Create an instance of the rest client and validate provided token
-var rest = new TwitchRestApiClient();
-var identity = await rest.ValidateAsync(token);
-
 // Create an instance of the chat client and set identity
 var chat = new TwitchChatApiClient();
-chat.SetIdentity(identity.UserName, token);
+
+// To identify as anonymous, set the username and token to justinfan<numbers>
+var anonymousName = TwitchConstants.AnonymousNamePrefix + 0001;
+chat.WithIdentity(anonymousName, anonymousName);
 
 chat.Connected += OnConnected;
 chat.UserNoticeReceived += OnUserNoticeReceived;
@@ -37,24 +36,24 @@ void OnUserNoticeReceived(UserNoticeEventArgs args)
     {
         // Regular subs
         case SubscriptionTags sub:
-            Console.WriteLine($"> {sub.UserDisplayName} subscribed at {sub.SubscriptionType} for {sub.TotalMonths} month(s)!");
+            Console.WriteLine($"> {sub.AuthorDisplayName} subscribed at {sub.SubscriptionType} for {sub.TotalMonths} month(s)!");
             if (sub.IsStreakShared)
                 Console.WriteLine($"> Their sub streak is {sub.StreakMonths} month(s)!");
             break;
 
         // Sub gifted
         case SubscriptionGiftTags subgift:
-            Console.WriteLine($"> {subgift.UserDisplayName} just gifted a {subgift.SubscriptionType} sub to {subgift.RecipientDisplayName}!");
+            Console.WriteLine($"> {subgift.AuthorDisplayName} just gifted a {subgift.SubscriptionType} sub to {subgift.RecipientDisplayName}!");
             break;
 
         // Gift sub upgraded to paid
         case SubscriptionGiftUpgradeTags subgiftUpgrade:
-            Console.WriteLine($"> {subgiftUpgrade.UserDisplayName} just upgraded their sub gift from {subgiftUpgrade.SenderDisplayName}!");
+            Console.WriteLine($"> {subgiftUpgrade.AuthorDisplayName} just upgraded their sub gift from {subgiftUpgrade.SenderDisplayName}!");
             break;
 
         // Anonymous sub upgraded to paid
         case SubscriptionGiftUpgradeAnonymousTags subgiftAnon:
-            Console.WriteLine($"> {subgiftAnon.UserDisplayName} just upgraded their sub gift from Anonymous!");
+            Console.WriteLine($"> {subgiftAnon.AuthorDisplayName} just upgraded their sub gift from Anonymous!");
             break;
     }
 }

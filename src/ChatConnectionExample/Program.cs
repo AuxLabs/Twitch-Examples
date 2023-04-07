@@ -1,26 +1,24 @@
-﻿using AuxLabs.SimpleTwitch.Chat;
-using AuxLabs.SimpleTwitch.Rest;
+﻿using AuxLabs.Twitch;
+using AuxLabs.Twitch.Chat.Api;
+using AuxLabs.Twitch.Chat.Models;
 using Examples;
 
 Console.WriteLine("> Initializing chat client...");
-var token = ExampleHelper.GetOrRequestToken();
 var channelName = ExampleHelper.RequestValue("> Please enter the channel name to join: ");
-
-Console.WriteLine("> Connecting...");
-
-// Create an instance of the rest client and validate provided token
-var rest = new TwitchRestApiClient();
-var identity = await rest.ValidateAsync(token);
 
 // Create an instance of the chat client and set identity
 var chat = new TwitchChatApiClient();
-chat.SetIdentity(identity.UserName, token);
+
+// To identify as anonymous, set the username and token to justinfan<numbers>
+var anonymousName = TwitchConstants.AnonymousNamePrefix + 0001;
+chat.WithIdentity(anonymousName, anonymousName);
 
 chat.Connected += OnConnected;
 chat.MessageReceived += OnMessageReceived;
 
 // Run the connection loop, the app will lock here until the client is disposed.
 await chat.RunAsync();
+await Task.Delay(-1);
 
 // After connection is confirmed, join a channel
 void OnConnected()                     
@@ -33,8 +31,8 @@ void OnConnected()
 void OnMessageReceived(MessageEventArgs args)
 {
     // Check if the message is replying to another
-    if (args.Tags.ReplyParentMessageId != null)     
-        Console.WriteLine($"#{args.ChannelName} {args.Tags.UserDisplayName} -> {args.Tags.ReplyParentUserName}: {args.Message}");
+    if (args.Tags.ReplyAuthorId != null)     
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.AuthorDisplayName} -> {args.Tags.ReplyAuthorDisplayName}: {args.Message}");
     else
-        Console.WriteLine($"#{args.ChannelName} {args.Tags.UserDisplayName}: {args.Message}");
+        Console.WriteLine($"#{args.ChannelName} {args.Tags.AuthorDisplayName}: {args.Message}");
 }
