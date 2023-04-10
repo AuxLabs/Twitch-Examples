@@ -3,7 +3,7 @@ Example projects for the [AuxLabs.Twitch](https://github.com/AuxLabs/Twitch) lib
 
 All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environment variables set.
 
-## Main Clients
+## Main Clients  
 ### Identity  
 *None yet*
 
@@ -20,7 +20,10 @@ All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environmen
 *None yet*
 
 
-## Api Clients
+## Api Clients  
+
+Api clients are used internally by the library and, as bare minimum implementations, they require much more work to be implemented. They should only be used in advanced cases where the features provided by the main clients are unnecessary overhead in your application.
+
 ### Identity  
 - [Validating tokens](src/ValidateTokenExample)
 
