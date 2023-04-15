@@ -47,6 +47,6 @@ Api clients are used internally by the library and, as bare minimum implementati
 
 
 ## Other Examples  
-Other repositories showing full example applications.
+Other repositories showing example applications.
 
 *None yet*
