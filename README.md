@@ -4,7 +4,7 @@ Example projects for the [AuxLabs.Twitch](https://github.com/AuxLabs/Twitch) lib
 All projects assume you have the `TWITCH_TOKEN` and `TWITCH_CLIENTID` environment variables set.
 
 ## Main Clients  
-Basic example implementations to help with basic questions that might be asked when learning the library.
+Example implementations to help with basic questions that might be asked when learning the library.
 
 ### Identity  
 *None yet*
